@@ -29,7 +29,6 @@
     "node-sass": "^3.8.0",
     "nodemon": "^1.9.2",
     "npm-install-webpack-plugin": "^4.0.4",
-    "raw-loader": "^0.5.1",
     "sass-loader": "^3.2.0",
     "source-map-support": "^0.4.1",
     "webpack": "^1.13.1"
@@ -39,11 +38,9 @@
     "boulevard": "^2.3.5",
     "connect": "^3.4.1",
     "errorhandler": "^1.4.3",
-    "express": "^4.14.0",
     "lodash.compose": "^2.4.1",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
-    "speyside": "^3.1.0",
     "webpack-dev-middleware": "^1.5.1"
   }
 }
