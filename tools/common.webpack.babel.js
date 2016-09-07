@@ -11,7 +11,7 @@ export default {
 			{test: /\.html$/, loader: 'raw'},
 			{
 				test: /\.jsx?$/,
-				include: ['client', 'components', 'server', 'tools', 'views'].map(
+				include: ['client', 'components', 'server', 'tools', 'views', 'shared'].map(
 					f => path.resolve(__dirname, '..', f)
 				),
 				loader: 'babel'

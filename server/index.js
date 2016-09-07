@@ -1,25 +1,25 @@
-import express from 'express';
+import connect from 'connect';
 import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
+import errorhandler from 'errorhandler';
+import http from 'http';
+
 import webpackConfig from '../tools/client.webpack.babel';
 import renderReact from './render-react.jsx';
-import errorhandler from 'errorhandler';
+import routes from '../shared/router.jsx';
 
-import Home from '../components/home.jsx';
-
-const app = express();
+const app = connect();
+const port = process.env.PORT || 8082;
 
 app.use(webpackMiddleware(webpack(webpackConfig), {
   publicPath: "/",
 }));
 
-app.use(express.static('static'));
-app.use(renderReact);
-
-app.get('/', (req, res) => {
-	res.renderReact(Home, {where: 'server'})
+app.use((req, res) => {
+  res.writeHead(200, {'content-type': 'text/html'});
+  res.end(renderReact(routes(req, res)));
 })
 
 app.use(errorhandler());
 
-app.listen(8082, () => console.log('listening'));
+http.createServer(app).listen(port, () => console.log(`⛭ listening on ${port}`))
