@@ -1,7 +1,7 @@
 import express from 'express';
 import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
-import webpackConfig from '../webpack.config';
+import webpackConfig from '../tools/client.webpack.babel';
 import renderReact from './render-react.jsx';
 import errorhandler from 'errorhandler';
 
@@ -17,7 +17,6 @@ app.use(express.static('static'));
 app.use(renderReact);
 
 app.get('/', (req, res) => {
-	console.log('hi');
 	res.renderReact(App, {where: 'server'})
 })
 
