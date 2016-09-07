@@ -25,5 +25,9 @@ export default {
 				],
 			}
 		]
-	}
+	},
+
+	sassLoader: {
+		includePaths: [path.resolve(__dirname, '../bower_components')],
+	},
 };
