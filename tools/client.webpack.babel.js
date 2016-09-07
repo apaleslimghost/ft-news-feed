@@ -10,6 +10,6 @@ export default {
 	output: {
 		path: '/',
 		publicPath: '/',
-		filename: 'bundle.js'
+		filename: '[name].js'
 	},
 };

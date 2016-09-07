@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prestart": "webpack --config tools/server.webpack.babel.js --watch &",
-    "start": "nodemon build/backend.js"
+    "start": "nodemon -w build build/server.js"
   },
   "keywords": [],
   "author": "Matt Brennan <matt@153.io> (http://blog.153.io/)",
