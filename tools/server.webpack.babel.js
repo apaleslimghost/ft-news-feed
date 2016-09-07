@@ -2,6 +2,7 @@ import {BannerPlugin} from 'webpack';
 import fs from 'fs';
 import path from 'path';
 import common from './common.webpack.babel';
+import merge from 'lodash.merge';
 
 const nodeModules = fs.readdirSync('node_modules')
 .filter(x =>
@@ -12,8 +13,7 @@ const nodeModules = fs.readdirSync('node_modules')
 	return modules;
 }, {});
 
-export default {
-	...common,
+export default merge({}, common, {
 	entry: {
 		server: './server/index.js'
 	},
@@ -39,4 +39,4 @@ export default {
 		__dirname: true,
 		setImmediate: true
 	}
-};
+});

@@ -1,8 +1,7 @@
 import common from './common.webpack.babel';
+import merge from 'lodash.merge';
 
-export default {
-	...common,
-
+export default merge(common, {
 	entry: {
 		app: './client/index.jsx',
 	},
@@ -11,4 +10,4 @@ export default {
 		publicPath: '/',
 		filename: '[name].js'
 	},
-};
+});
