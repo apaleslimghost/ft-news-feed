@@ -1,7 +1,7 @@
 import common from './common.webpack.babel';
-import merge from 'lodash.merge';
+import mergeConfig from './merge-config';
 
-export default merge(common, {
+export default mergeConfig(common, {
 	entry: {
 		app: './client/index.jsx',
 	},
