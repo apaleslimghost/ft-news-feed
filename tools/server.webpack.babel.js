@@ -1,4 +1,4 @@
-import {IgnorePlugin, BannerPlugin} from 'webpack';
+import {BannerPlugin} from 'webpack';
 import fs from 'fs';
 import path from 'path';
 import common from './common.webpack.babel';

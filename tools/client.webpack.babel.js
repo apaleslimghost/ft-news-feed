@@ -1,4 +1,3 @@
-import path from 'path';
 import common from './common.webpack.babel';
 
 export default {
