@@ -1,5 +1,5 @@
 import React from 'react';
-import CssInsertReceive from '../components/css-insert-receive.jsx';
+import App from '../components/app.jsx';
 import {renderToString} from 'react-dom/server';
 import base from '../views/base';
 
@@ -9,9 +9,9 @@ export default function(req, res, next) {
 		const insertCss = s => styles += s._getCss();
 
 		const body = renderToString(
-			<CssInsertReceive insertCss={insertCss}>
+			<App insertCss={insertCss}>
 				<Component {...props} {...(res.locals || {})} />
-			</CssInsertReceive>
+			</App>
 		);
 
 		res.send(

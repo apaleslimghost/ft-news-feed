@@ -1,9 +1,9 @@
 import React from 'react';
 import {render} from 'react-dom';
 
+import Home from '../components/home.jsx';
 import App from '../components/app.jsx';
-import CssInsertReceive from '../components/css-insert-receive.jsx';
 
-render(<CssInsertReceive insertCss={s => s._insertCss()}>
-	<App where='client' />
-</CssInsertReceive>, document.querySelector('main'));
+render(<App insertCss={s => s._insertCss()}>
+	<Home where='client' />
+</App>, document.querySelector('main'));

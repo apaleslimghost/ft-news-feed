@@ -5,7 +5,7 @@ import webpackConfig from '../tools/client.webpack.babel';
 import renderReact from './render-react.jsx';
 import errorhandler from 'errorhandler';
 
-import App from '../components/app.jsx';
+import Home from '../components/home.jsx';
 
 const app = express();
 
@@ -17,7 +17,7 @@ app.use(express.static('static'));
 app.use(renderReact);
 
 app.get('/', (req, res) => {
-	res.renderReact(App, {where: 'server'})
+	res.renderReact(Home, {where: 'server'})
 })
 
 app.use(errorhandler());

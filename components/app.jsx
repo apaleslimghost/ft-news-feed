@@ -1,9 +1,19 @@
-import React from 'react';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from '../styles/test.scss';
+import {Component, PropTypes, Children} from 'react';
 
-const App = ({where}) => <h1 className={s.header}>
-	it works on the <span className={s.highlight}>{where}</span>!
-</h1>;
+export default class App extends Component {
+	static childContextTypes = {
+		insertCss: PropTypes.func,
+	};
 
-export default withStyles(s)(App);
+	static defaultProps = {
+		insertCss() {},
+	};
+
+	getChildContext() {
+		return {insertCss: this.props.insertCss};
+	}
+
+	render() {
+		return Children.only(this.props.children);
+	}
+}
