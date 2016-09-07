@@ -9,5 +9,5 @@ export default mergeConfig(common, {
 		path: '/',
 		publicPath: '/',
 		filename: '[name].js'
-	},
+	}
 });

@@ -1,32 +1,21 @@
-import React, {Component, Children, PropTypes} from 'react';
+import React from 'react';
+import CssInsertReceive from '../components/css-insert-receive.jsx';
 import {renderToString} from 'react-dom/server';
-import fs from 'fs';
-import path from 'path';
-
-const base = fs.readFileSync(path.resolve(__dirname, '../views/base.html'), 'utf8');
-
-class Context extends Component {
-	static childContextTypes = {
-		insertCSS: PropTypes.func,
-	};
-
-	getChildContext() {
-		return this.props.context;
-	}
-
-	render() {
-		return Children.only(this.props.children);
-	}
-}
+import base from '../views/base';
 
 export default function(req, res, next) {
 	res.renderReact = (Component, props = {}, context = {}) => {
+		let styles = '';
+		const insertCss = s => styles += s._getCss();
+
+		const body = renderToString(
+			<CssInsertReceive insertCss={insertCss}>
+				<Component {...props} {...(res.locals || {})} />
+			</CssInsertReceive>
+		);
+
 		res.send(
-			base.replace('{{{body}}}', renderToString(
-				<Context context={context}>
-					<Component {...props} {...(res.locals || {})} />
-				</Context>
-			))
+			base({body, styles})
 		);
 	};
 
