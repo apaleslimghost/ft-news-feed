@@ -7,8 +7,13 @@ import api from './api';
 
 export default route({
 	async '/' () {
-		const articles = await api.search();
-		return <Home articles={articles} />;
+		const {articles} = await api.search(1);
+		return <Home articles={articles} page={1} />;
+	},
+
+	async '/page/:page' ({params}) {
+		const result = await api.search(params.page);
+		return <Home {...result} />;
 	},
 
 	async '/content/:uuid' ({params}) {

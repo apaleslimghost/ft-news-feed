@@ -9,11 +9,17 @@ export default model({
 		return _source;
 	},
 
-	async search() {
-		const response = await apiClient.search({
-			filters: []
+	async search(p) {
+		const page = parseInt(p, 10)
+		const offset = 30 * (page - 1);
+
+		const articles = await apiClient.search({
+			filters: [],
+			fields: ['title', 'id', 'metadata', 'summaries', 'publishedDate', 'byline'],
+			count: 30,
+			offset,
 		});
 
-		return response;
+		return {articles, page};
 	}
 }, {clientPrefix: '/_api'});
