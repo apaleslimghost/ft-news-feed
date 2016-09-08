@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "webpack --config tools/server.webpack.babel.js",
+    "postinstall": "webpack --config tools/server.webpack.babel.js",
     "prestart": "webpack --config tools/server.webpack.babel.js --watch &",
     "start": "nodemon -w build build/server.js"
   },

@@ -13,6 +13,10 @@ export default {
 			navigate(url) {
 				window.history.pushState(null, document.title, url);
 				runHandler(url);
+			},
+
+			close() {
+				window.removeEventListener('popstate', runHandler);
 			}
 		};
 	},

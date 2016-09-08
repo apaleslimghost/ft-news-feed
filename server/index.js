@@ -1,6 +1,7 @@
 import connect from 'connect';
 import webpack from 'webpack';
-import webpackMiddleware from 'webpack-dev-middleware';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
 import errorhandler from 'errorhandler';
 import http from 'http';
 
@@ -9,11 +10,14 @@ import renderReact from './render-react.jsx';
 import routes from '../shared/router.jsx';
 
 const app = connect();
-const port = process.env.PORT || 8082;
 
-app.use(webpackMiddleware(webpack(webpackConfig), {
+const compiler = webpack(webpackConfig);
+
+app.use(webpackDevMiddleware(compiler, {
   publicPath: "/",
 }));
+
+app.use(webpackHotMiddleware(compiler));
 
 app.use((req, res) => {
   res.writeHead(200, {'content-type': 'text/html'});
@@ -22,4 +26,9 @@ app.use((req, res) => {
 
 app.use(errorhandler());
 
-http.createServer(app).listen(port, () => console.log(`⛭ listening on ${port}`))
+const port = process.env.PORT || 8082;
+
+const server = http.createServer(app);
+server.listen(port, () => {
+	console.log(`⛭ listening on ${port}`);
+});

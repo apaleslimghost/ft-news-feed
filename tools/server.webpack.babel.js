@@ -15,12 +15,14 @@ const nodeModules = fs.readdirSync('node_modules')
 
 export default mergeConfig(common, {
 	entry: {
-		server: './server/index.js'
+		server: [
+			'./server/index.js',
+		],
 	},
 	target: 'node',
 	output: {
 		path: path.join(__dirname, '../build'),
-		filename: '[name].js'
+		filename: 'server.js'
 	},
 	externals: nodeModules,
 	plugins: [
