@@ -1,7 +1,7 @@
 export default {
 	createServer(handler) {
-		function runHandler(url = location.pathname) {
-			handler({url});
+		function runHandler() {
+			handler({url: location.pathname});
 		}
 
 		return {
@@ -12,7 +12,7 @@ export default {
 
 			navigate(url) {
 				window.history.pushState(null, document.title, url);
-				runHandler(url);
+				runHandler();
 			},
 
 			close() {
