@@ -1,0 +1,28 @@
+@import 'o-typography/main';
+@import 'o-colors/main';
+
+.body {
+	@include oTypographyBodyWrapper;
+
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+}
+
+.title {
+	@include oTypographyHeading1;
+}
+
+.subhead {
+	@include oTypographyLead;
+}
+
+.primaryTheme {
+	@include oTypographyLinkTopic;
+	@include oTypographySansBold(l);
+}
+
+:global .n-content-image {
+	margin: 1rem 0;
+}

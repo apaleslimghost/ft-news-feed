@@ -2,6 +2,7 @@ import React from 'react';
 import route from './route';
 
 import Home from '../components/home.jsx';
+import Article from '../components/article.jsx';
 import api from './api';
 
 export default route({
@@ -10,7 +11,7 @@ export default route({
 	},
 
 	async '/content/:uuid' ({params}) {
-		const {bodyHTML} = await api.article(params.uuid);
-		return <div dangerouslySetInnerHTML={{__html: bodyHTML}} />
+		const article = await api.article(params.uuid);
+		return <Article {...article} />;
 	}
 });
