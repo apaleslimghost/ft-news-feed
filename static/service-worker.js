@@ -17,5 +17,3 @@ toolbox.router.get(
 	toolbox.cacheOnly,
 	{origin: 'http://image.webservices.ft.com'}
 );
-
-console.log(toolbox.router.routes);
