@@ -7,7 +7,7 @@
     "build": "webpack --config tools/server.webpack.babel.js",
     "postinstall": "webpack --config tools/server.webpack.babel.js",
     "prestart": "webpack --config tools/server.webpack.babel.js --watch &",
-    "start": "nodemon -w build build/server.js"
+    "start": "nodemon -x 'node -r dotenv/config' -w build build/server.js"
   },
   "keywords": [],
   "author": "Matt Brennan <matt@153.io> (http://blog.153.io/)",
@@ -23,6 +23,7 @@
     "babel-preset-stage-2": "^6.11.0",
     "babel-preset-stage-3": "^6.11.0",
     "css-loader": "^0.23.1",
+    "dotenv": "^2.0.0",
     "eslint": "^3.2.2",
     "eslint-plugin-import": "^1.12.0",
     "eslint-plugin-react": "^5.2.2",
@@ -44,6 +45,7 @@
     "errorhandler": "^1.4.3",
     "get-parameter-names": "^0.3.0",
     "lodash.compose": "^2.4.1",
+    "next-ft-api-client": "^3.25.0",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "webpack-dev-middleware": "^1.5.1",

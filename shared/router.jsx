@@ -6,8 +6,9 @@ import Article from '../components/article.jsx';
 import api from './api';
 
 export default route({
-	'/'() {
-		return <Home where='anywhere' />;
+	async '/' () {
+		const articles = await api.search();
+		return <Home articles={articles} />;
 	},
 
 	async '/content/:uuid' ({params}) {
