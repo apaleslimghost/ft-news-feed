@@ -6,6 +6,8 @@ import routes from '../shared/router.jsx';
 import compose from 'lodash.compose';
 import history from './history';
 
+import './register-service-worker';
+
 let server;
 
 const createServer = routes => {

@@ -1,6 +1,7 @@
-import {Component, PropTypes, Children} from 'react';
+import React, {Component, PropTypes} from 'react';
+import Main from './main.jsx';
 
-export default class App extends Component {
+class App extends Component {
 	static childContextTypes = {
 		insertCss: PropTypes.func,
 		link: PropTypes.func,
@@ -8,7 +9,7 @@ export default class App extends Component {
 
 	static defaultProps = {
 		insertCss() {},
-		link() { },
+		link() {},
 	};
 
 	getChildContext() {
@@ -19,6 +20,8 @@ export default class App extends Component {
 	}
 
 	render() {
-		return Children.only(this.props.children);
+		return <Main>{this.props.children}</Main>;
 	}
 }
+
+export default App;
