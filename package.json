@@ -45,9 +45,12 @@
     "errorhandler": "^1.4.3",
     "get-parameter-names": "^0.3.0",
     "lodash.compose": "^2.4.1",
+    "lodash.orderby": "^4.6.0",
+    "lodash.sortby": "^4.2.1",
     "next-ft-api-client": "^3.25.0",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
+    "serve-static": "^1.11.1",
     "webpack-dev-middleware": "^1.5.1",
     "webpack-hot-middleware": "^2.12.2"
   }

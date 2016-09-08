@@ -1,23 +1,40 @@
-import React, {PropTypes} from 'react';
+import React, {Component, PropTypes} from 'react';
+import orderBy from 'lodash.orderby';
 import s from '../styles/feed.scss';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 
-const Feed = ({articles, page}, {link}) => <ul className={s.feed}>
-	{articles.map(article => <li key={article.id} className={s.item}>
-		<a href={`/content/${article.id}`} onClick={link} className={s.link}>
-			{article.title}
-		</a>
+class Feed extends Component {
+	static contextTypes = {
+		link: PropTypes.func,
+	};
 
-		<h2 className={s.subhead}>{article.summaries[0]}</h2>
-	</li>)}
+	constructor(props, context) {
+		super(props, context);
+		this.state = {articles: props.articles};
+	}
 
-	{page > 1 && <a href={`/page/${page - 1}`} onClick={link}>←</a>}
-	Page {page}
-	<a href={`/page/${page + 1}`} onClick={link}>→</a>
-</ul>;
+	getArticles() {
+		return orderBy(
+			this.state.articles,
+			({publishedDate}) => new Date(publishedDate),
+			'desc'
+		);
+	}
 
-Feed.contextTypes = {
-	link: PropTypes.func,
-};
+	render() {
+		const articles = this.getArticles();
+		const {link} = this.context;
+
+		return <ul className={s.feed}>
+			{articles.map(article => <li key={article.id} className={s.item}>
+				<a href={`/content/${article.id}`} onClick={link} className={s.link}>
+					{article.title}
+				</a>
+
+				<p className={s.subhead}>{article.summaries[0]}</p>
+			</li>)}
+		</ul>;
+	}
+}
 
 export default withStyles(s)(Feed);

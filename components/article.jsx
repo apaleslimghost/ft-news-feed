@@ -8,7 +8,7 @@ const PrimaryLink = ({primary}) => primary ? <a href={primary.url} target='_blan
 	{primary.prefLabel}
 </a> : null;
 
-const Article = ({title, bodyHTML, summaries, webUrl, metadata}) => <article>
+const Article = ({title, bodyHTML, summaries, webUrl, metadata}) => <article className={s.article}>
 	<PrimaryLink primary={getPrimary('theme')(metadata)} />
 
 	<h1 className={s.title}>{title}</h1>

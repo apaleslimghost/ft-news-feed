@@ -8,8 +8,6 @@ export default mergeConfig(common, {
 			'webpack-hot-middleware/client',
 			'./client/index.jsx',
 		],
-
-		'service-worker': './client/service-worker.js',
 	},
 	output: {
 		path: '/',

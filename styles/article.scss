@@ -1,6 +1,10 @@
 @import 'o-typography/main';
 @import 'o-colors/main';
 
+.article {
+	padding: 1rem 0;
+}
+
 .body {
 	@include oTypographyBodyWrapper;
 
