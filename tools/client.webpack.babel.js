@@ -21,5 +21,8 @@ export default mergeConfig(common, {
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NoErrorsPlugin(),
 	],
+	resolve: {
+		packageAlias: 'browser'
+	},
 	debug: true,
 });

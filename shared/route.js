@@ -1,5 +1,12 @@
-import {withFourOhFour} from 'boulevard';
+import {route_} from 'boulevard';
 
-export default withFourOhFour((req, res, next) => {
-	return Promise.reject();
+export default route_({
+	fourOhFour(req, res, next) {
+		return Promise.reject();
+	},
+
+	addParams(params, args) {
+		args[0].params = params;
+		return args;
+	}
 });

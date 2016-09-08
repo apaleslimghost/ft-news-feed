@@ -8,7 +8,7 @@ import http from 'http';
 import webpackConfig from '../tools/client.webpack.babel';
 import connectRoute, {react, json} from './connect-route';
 import routes from '../shared/router.jsx';
-import api from './api';
+import api from '../shared/api';
 
 const app = connect();
 const compiler = webpack(webpackConfig);
@@ -20,7 +20,7 @@ app.use(webpackDevMiddleware(compiler, {
 app.use(webpackHotMiddleware(compiler));
 
 app.use(connectRoute(routes, react));
-app.use('/_api', connectRoute(api, json));
+app.use('/_api', connectRoute(api.router, json));
 
 app.use(errorhandler());
 
