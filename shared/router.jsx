@@ -1,9 +1,9 @@
 import React from 'react';
-import router from 'boulevard';
+import route from './route';
 
 import Home from '../components/home.jsx';
 
-export default router({
+export default route({
 	'/'() {
 		return <Home where='anywhere' />;
 	},

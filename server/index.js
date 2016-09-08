@@ -6,23 +6,21 @@ import errorhandler from 'errorhandler';
 import http from 'http';
 
 import webpackConfig from '../tools/client.webpack.babel';
-import renderReact from './render-react.jsx';
+import connectRoute, {react, json} from './connect-route';
 import routes from '../shared/router.jsx';
+import api from './api';
 
 const app = connect();
-
 const compiler = webpack(webpackConfig);
 
 app.use(webpackDevMiddleware(compiler, {
-  publicPath: "/",
+	publicPath: "/",
 }));
 
 app.use(webpackHotMiddleware(compiler));
 
-app.use((req, res) => {
-  res.writeHead(200, {'content-type': 'text/html'});
-  res.end(renderReact(routes(req, res)));
-})
+app.use(connectRoute(routes, react));
+app.use('/_api', connectRoute(api, json));
 
 app.use(errorhandler());
 
