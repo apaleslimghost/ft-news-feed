@@ -1,0 +1,29 @@
+@import 'o-typography/main';
+@import 'o-colors/main';
+
+.feed {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.item {
+	padding: 1rem;
+	border-bottom: 1px solid oColorsGetPaletteColor('pink-tint2');
+}
+
+.link {
+	@include oTypographySerifDisplay(m);
+	@include oColorsFor(title, text);
+	text-decoration: none;
+
+	&:hover {
+		border-bottom-width: 1px;
+		border-bottom-style: dotted;
+	}
+}
+
+.subhead {
+	@include oTypographySans(s);
+	margin: .2rem 0;
+}
