@@ -1,8 +1,9 @@
-import renderReact from './render-react.jsx';
+import base from '../views/base';
+import main from '../components/main';
 
-export const react = (req, res) => component => {
+export const html = (req, res) => children => {
 	res.headers['content-type'] = 'text/html';
-	return renderReact(component);
+	return base({body: main({children})});
 };
 
 export const json = (req, res) => obj => {

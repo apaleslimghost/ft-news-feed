@@ -6,7 +6,7 @@ export default mergeConfig(common, {
 	entry: {
 		app: [
 			'webpack-hot-middleware/client',
-			'./client/index.jsx',
+			'./client/index',
 		],
 	},
 	output: {
