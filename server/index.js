@@ -28,7 +28,7 @@ app.use(serveStatic(path.resolve(__dirname, '../static')));
 app.use('/assets', serveStatic(path.resolve(__dirname, '../bower_components/')));
 app.use(errorhandler());
 
-const port = process.env.PORT || 8082;
+const port = process.env.PORT || 7000;
 
 const server = http.createServer(app);
 server.listen(port, () => {

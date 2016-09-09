@@ -7,16 +7,10 @@ toolbox.precache([
 	'http://image.webservices.ft.com/v1/images/raw/fticon:brand-ft-masthead?source=newsfeed'
 ]);
 
-function cachedHomepage(request, values, options) {
-	const homepage = request.clone();
-	homepage.url = location.origin;
-	return toolbox.cacheFirst(homepage, {}, options);
-}
-
 toolbox.router.get('/', toolbox.cacheFirst);
 toolbox.router.get('/app.js', toolbox.cacheFirst);
-toolbox.router.get('/page/:page', cachedHomepage);
-toolbox.router.get('/content/:uuid', cachedHomepage);
+toolbox.router.get('/page/:page', toolbox.cacheFirst);
+toolbox.router.get('/content/:uuid', toolbox.cacheFirst);
 toolbox.router.get('/_api/search/:page', toolbox.networkFirst);
 toolbox.router.get('/_api/article/:uuid', toolbox.networkFirst);
 toolbox.router.get(
