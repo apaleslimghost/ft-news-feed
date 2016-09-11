@@ -18,7 +18,7 @@ $o-fonts-path: '//h2.ft.com/build/v2/files/o-fonts-assets@1.3.0/';
 }
 
 .main {
-	margin: $header-height .5rem .5rem;
 	max-width: 40em;
-	margin: 0 auto;
+	margin: $header-height auto .5rem;
+	padding: 0 .5rem;
 }

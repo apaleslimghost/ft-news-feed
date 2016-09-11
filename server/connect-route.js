@@ -3,7 +3,11 @@ import main from '../components/main';
 
 export const html = (req, res) => children => {
 	res.headers['content-type'] = 'text/html';
-	return base({body: main({children})});
+	const {toString, styles} = main({children});
+	return base({body: toString(), styles: styles.reduce(
+		(css, style) => css + style._getCss(),
+		''
+	)});
 };
 
 export const json = (req, res) => obj => {

@@ -11,7 +11,10 @@ const createServer = routes => {
 
 	server = history.createServer(
 		(...args) => Promise.resolve(routes(...args))
-		.then(children => document.querySelector('main').innerHTML = children)
+		.then(({toString, styles}) => {
+			document.querySelector('main').innerHTML = toString();
+			styles.forEach(s => s._insertCss());
+		})
 	);
 
 	server.listen();
