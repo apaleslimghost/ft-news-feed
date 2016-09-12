@@ -16,6 +16,7 @@ const createServer = routes => {
 		.then(({toString, styles}) => {
 			mainElement.innerHTML = toString();
 			styles.forEach(s => s._insertCss());
+			window.scrollTo(0, 0);
 		})
 	);
 
