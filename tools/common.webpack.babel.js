@@ -10,7 +10,7 @@ export default {
 		loaders: [
 			{test: /\.html$/, loader: 'raw'},
 			{
-				test: /\.jsx?$/,
+				test: /\.js$/,
 				include: ['client', 'components', 'server', 'tools', 'views', 'shared'].map(
 					f => path.resolve(__dirname, '..', f)
 				),

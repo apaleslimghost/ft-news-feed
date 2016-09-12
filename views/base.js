@@ -7,7 +7,7 @@ export default ({body, styles}) => `<!doctype html>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<main>${body}</main>
+	${body}
 </body>
 <script src="/app.js"></script>
 </html>`;

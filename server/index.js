@@ -8,8 +8,8 @@ import path from 'path';
 import serveStatic from 'serve-static';
 
 import webpackConfig from '../tools/client.webpack.babel';
-import connectRoute, {react, json} from './connect-route';
-import routes from '../shared/router.jsx';
+import connectRoute, {html, json} from './connect-route';
+import routes from '../shared/router';
 import api from '../shared/api';
 
 const app = connect();
@@ -21,7 +21,7 @@ app.use(webpackDevMiddleware(compiler, {
 
 app.use(webpackHotMiddleware(compiler));
 
-app.use(connectRoute(routes, react));
+app.use(connectRoute(routes, html));
 app.use('/_api', connectRoute(api.router, json));
 
 app.use(serveStatic(path.resolve(__dirname, '../static')));
