@@ -16,8 +16,8 @@ toolbox.router.get('/content/:uuid', serveShell);
 
 toolbox.router.get('/app.js', toolbox.cacheFirst);
 
-toolbox.router.get('/_api/search/:page', toolbox.networkFirst);
-toolbox.router.get('/_api/article/:uuid', toolbox.networkFirst);
+toolbox.router.get('/_api/search/:page', toolbox.fastest);
+toolbox.router.get('/_api/article/:uuid', toolbox.fastest);
 
 toolbox.router.get(
 	'/v1/images/raw/fticon:brand-ft-masthead',
