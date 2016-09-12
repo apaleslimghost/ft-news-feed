@@ -2,7 +2,7 @@ import h from './h';
 import s from '../styles/feed.scss';
 
 const item = article => h()`<li class="${s.item}">
-	<a href=${`/content/${article.id}`} class="${s.link}">
+	<a href="${`/content/${article.id}`}" class="${s.link}">
 		${article.title}
 	</a>
 
