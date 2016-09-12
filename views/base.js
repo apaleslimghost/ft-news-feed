@@ -5,6 +5,10 @@ export default ({body, styles}) => `<!doctype html>
 	<title>FT News Feed</title>
 	<style>${styles}</style>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<link rel="apple-touch-icon" href="/icons/192.png">
+	<link rel="manifest" href="/manifest.json">
 </head>
 <body>
 	${body}
