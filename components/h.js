@@ -1,8 +1,6 @@
-const isElement = Symbol('isElement');
-
 const renderVal = val =>
 		!val                    ? {content: () => ''}
-	: val[isElement]          ? val
+	: val.isElement          ? val
 	: Array.isArray(val)      ? val.reduce(
 		(agg, child) => ({
 			content: () => agg.content() + child.content(),
@@ -22,7 +20,7 @@ export default style => (strings, ...values) => {
 			return b + string + content();
 		}, ''),
 
-		[isElement]: true,
+		isElement: true,
 		styles: parentStyles,
 	};
 };

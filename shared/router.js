@@ -17,6 +17,6 @@ export default route({
 	},
 
 	'/_shell' () {
-		return main();
+		return '';
 	}
 });

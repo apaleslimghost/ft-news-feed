@@ -7,7 +7,8 @@
     "build": "webpack --config tools/server.webpack.babel.js",
     "postinstall": "webpack --config tools/server.webpack.babel.js",
     "prestart": "webpack --config tools/server.webpack.babel.js --watch &",
-    "start": "nodemon -x 'node -r dotenv/config' -w build build/server.js"
+    "start": "nodemon -x 'node -r dotenv/config' -w build build/server.js",
+    "stat": "webpack --json --config tools/client.webpack.babel.js > stat.json"
   },
   "keywords": [],
   "author": "Matt Brennan <matt@153.io> (http://blog.153.io/)",
@@ -50,7 +51,6 @@
     "lodash.sortby": "^4.2.1",
     "next-ft-api-client": "^3.25.0",
     "serve-static": "^1.11.1",
-    "webpack-dev-middleware": "^1.5.1",
-    "webpack-hot-middleware": "^2.12.2"
+    "webpack-dev-middleware": "^1.5.1"
   }
 }

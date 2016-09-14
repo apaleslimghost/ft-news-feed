@@ -4,10 +4,7 @@ import webpack from 'webpack';
 
 export default mergeConfig(common, {
 	entry: {
-		app: [
-			'webpack-hot-middleware/client',
-			'./client/index',
-		],
+		app: './client/index',
 	},
 	output: {
 		path: '/',
