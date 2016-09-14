@@ -2,7 +2,6 @@ import route from './route';
 
 import feed from '../components/feed';
 import article from '../components/article';
-import main from '../components/main';
 import api from './api';
 
 export default route({

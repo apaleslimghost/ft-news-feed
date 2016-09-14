@@ -1,5 +1,8 @@
 @import 'vars';
+@import 'o-fonts/main';
 @import 'o-typography/main';
+
+@include oFontsInclude(MetricWeb, semibold);
 
 .link {
 	@include oTypographyLinkTopic;

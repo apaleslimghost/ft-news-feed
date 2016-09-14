@@ -1,12 +1,8 @@
 @import 'vars';
 
-$o-fonts-path: '//h2.ft.com/build/v2/files/o-fonts-assets@1.3.0/';
 @import 'o-fonts/main';
 @import 'o-colors/main';
 
-@include oFontsInclude(FinancierDisplayWeb, regular); // title
-@include oFontsInclude(MetricWeb, regular); // body
-@include oFontsInclude(MetricWeb, semibold); // headings
 
 :global body {
 	@include oColorsFor(page, background body);
