@@ -1,7 +1,4 @@
 export default (routes, {clientPrefix = ''} = {}) => Object.keys(routes).reduce((o, key) => {
-	o[key] = async (...params) => {
-		const response = await fetch(`${clientPrefix}/${key}/${params.join('/')}`);
-		return response.json();
-	};
+	o[key] = (...params) => fetch(`${clientPrefix}/${key}/${params.join('/')}`).then(r => r.json());
 	return o;
 }, {})

@@ -5,14 +5,12 @@ import article from '../components/article';
 import api from './api';
 
 export default route({
-	async '/' () {
-		const {articles} = await api.search(1);
-		return feed({articles});
+	'/' () {
+		return api.search(1).then(feed);
 	},
 
-	async '/content/:uuid' ({params}) {
-		const content = await api.article(params.uuid);
-		return article(content);
+	'/content/:uuid' ({params}) {
+		return api.article(params.uuid).then(article);
 	},
 
 	'/_shell' () {
