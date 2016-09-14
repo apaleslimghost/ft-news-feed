@@ -1,4 +1,3 @@
-import React from 'react';
 import route from './route';
 
 import feed from '../components/feed';

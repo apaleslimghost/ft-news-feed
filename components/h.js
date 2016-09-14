@@ -1,21 +1,28 @@
 const isElement = Symbol('isElement');
 
-const renderVal = (val, styles) =>
-		!val                    ? ''
-	: val[isElement]          ? ([].push.apply(styles, val.styles), val.toString())
-	: Array.isArray(val)      ? val.map(c => renderVal(c, styles)).join('')
-	: typeof val === 'string' ? val
-	: '';
+const renderVal = val =>
+		!val                    ? {content: () => ''}
+	: val[isElement]          ? val
+	: Array.isArray(val)      ? val.reduce(
+		(agg, child) => ({
+			content: () => agg.content() + child.content(),
+			styles: agg.styles.concat(child.styles),
+		}),
+		{content: () => '', styles: []}
+	)
+	: typeof val === 'string' ? {content: () => val}
+	: {content: () => ''};
 
 export default style => (strings, ...values) => {
-	const styles = [].concat(style || []);
+	const parentStyles = [].concat(style || []);
 	return {
-		toString: () => strings.reduce((b, string, i) =>
-			b + string + renderVal(values[i], styles),
-			''
-		),
+		content: () => strings.reduce((b, string, i) => {
+			const {content, styles = []} = renderVal(values[i]);
+			parentStyles.push.apply(parentStyles, styles);
+			return b + string + content();
+		}, ''),
 
 		[isElement]: true,
-		styles,
+		styles: parentStyles,
 	};
 };

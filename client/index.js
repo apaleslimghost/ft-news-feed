@@ -13,8 +13,8 @@ const createServer = routes => {
 
 	server = history.createServer(
 		(...args) => Promise.resolve(routes(...args))
-		.then(({toString, styles}) => {
-			mainElement.innerHTML = toString();
+		.then(({content, styles}) => {
+			mainElement.innerHTML = content();
 			styles.forEach(s => s._insertCss());
 			window.scrollTo(0, 0);
 		})

@@ -3,9 +3,11 @@ import main from '../components/main';
 
 export const html = (req, res) => children => {
 	res.headers['content-type'] = 'text/html';
-	const {toString, styles} = main({children});
-	return base({body: toString(), styles: styles.reduce(
-		(css, style) => css + style._getCss(),
+	const {content, styles = []} = main({children});
+	return base({body: content(), styles: styles.reduce(
+		(css, style) => {
+			return css + style._getCss()
+		},
 		''
 	)});
 };

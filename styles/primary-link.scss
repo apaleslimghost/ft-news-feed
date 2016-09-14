@@ -1,0 +1,18 @@
+@import 'o-typography/main';
+
+.link {
+	@include oTypographyLinkTopic;
+	display: block;
+}
+
+.l {
+	@include oTypographySansBold(l);
+}
+
+.m {
+	@include oTypographySansBold(m);
+}
+
+.s {
+	@include oTypographySansBold(s);
+}

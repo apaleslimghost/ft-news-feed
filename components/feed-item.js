@@ -1,10 +1,13 @@
 import h from './h';
 import s from '../styles/feed-item.scss';
+import primaryLink from './primary-link';
 
-export default article => h()`<li class="${s.item}">
-	<a href="${`/content/${article.id}`}" class="${s.link}" data-link>
-		${article.title}
+export default ({id, title, summaries, metadata}) => h(s)`<li class="${s.item}">
+	${primaryLink({metadata, size: 's'})}
+
+	<a href="${`/content/${id}`}" class="${s.link}" data-link>
+		${title}
 	</a>
 
-	<p class="${s.subhead}">${article.summaries[0]}</p>
+	<p class="${s.subhead}">${summaries[0]}</p>
 </li>`;

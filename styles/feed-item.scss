@@ -21,3 +21,8 @@
 	@include oTypographySans(s);
 	margin: .2rem 0;
 }
+
+.primaryTheme {
+	@include oTypographyLinkTopic;
+	@include oTypographySansBold(m);
+}

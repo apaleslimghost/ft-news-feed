@@ -1,14 +1,9 @@
 import h from './h';
 import s from '../styles/article.scss';
-
-const getPrimary = key => metadata => metadata.find(datum => datum.primary === key);
-
-const primaryLink = (primary) => primary ? h()`<a href="${primary.url}" target='_blank' class="${s.primaryTheme}">
-	${primary.prefLabel}
-</a>` : '';
+import primaryLink from './primary-link';
 
 export default ({title, bodyHTML, summaries, webUrl, metadata}) => h(s)`<article class="${s.article}">
-	${primaryLink(getPrimary('theme')(metadata))}
+	${primaryLink({metadata, size: 'l'})}
 
 	<h1 class="${s.title}">${title}</h1>
 	<h2 class="${s.subhead}">${summaries[0]}</h2>

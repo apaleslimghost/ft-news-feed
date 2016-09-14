@@ -22,11 +22,6 @@
 	@include oTypographyLead;
 }
 
-.primaryTheme {
-	@include oTypographyLinkTopic;
-	@include oTypographySansBold(l);
-}
-
 :global .n-content-image {
 	margin: 1rem 0;
 }
