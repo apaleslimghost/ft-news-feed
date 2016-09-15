@@ -1,12 +1,7 @@
-import {route_} from 'boulevard';
+import route from '@quarterto/avenue';
 
-export default route_({
+export default r => route(r, {
 	fourOhFour(req, res, next) {
 		return Promise.reject();
 	},
-
-	addParams(params, args) {
-		args[0].params = params;
-		return args;
-	}
 });
