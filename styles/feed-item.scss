@@ -4,7 +4,6 @@
 @import 'o-colors/main';
 
 @include oFontsInclude(FinancierDisplayWeb, regular); // title
-@include oFontsInclude(MetricWeb, semibold); // headings
 
 .item {
 	padding: 1rem;
