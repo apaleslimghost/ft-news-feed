@@ -1,6 +1,5 @@
 import {BannerPlugin} from 'webpack';
 import fs from 'fs';
-import path from 'path';
 import common from './common.webpack.babel';
 import mergeConfig from './merge-config';
 
@@ -21,7 +20,6 @@ export default mergeConfig(common, {
 	},
 	target: 'node',
 	output: {
-		path: path.join(__dirname, '../build'),
 		filename: 'server.js'
 	},
 	externals: nodeModules,

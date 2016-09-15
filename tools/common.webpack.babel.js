@@ -6,6 +6,10 @@ export default {
 		new NpmInstallPlugin(),
 	],
 
+	output: {
+		path: path.resolve(__dirname, '../build'),
+	},
+
 	module: {
 		loaders: [
 			{test: /\.html$/, loader: 'raw'},
