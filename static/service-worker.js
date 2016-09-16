@@ -1,4 +1,7 @@
+/* eslint-env serviceworker */
+/* global toolbox, idbKeyval */
 importScripts('/assets/sw-toolbox/sw-toolbox.js');
+importScripts('/assets/idb-keyval/idb-keyval.js');
 
 toolbox.precache([
 	'/_shell',

@@ -47,6 +47,7 @@
     "errorhandler": "^1.4.3",
     "express": "^4.14.0",
     "get-parameter-names": "^0.3.0",
+    "idb-keyval": "^2.1.2",
     "lodash.compose": "^2.4.1",
     "lodash.orderby": "^4.6.0",
     "lodash.sortby": "^4.2.1",

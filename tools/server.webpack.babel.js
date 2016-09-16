@@ -44,7 +44,6 @@ export default mergeConfig(common, {
 		]
 	},
 
-	devtool: 'sourcemap',
 
 	node: {
 		console: true,

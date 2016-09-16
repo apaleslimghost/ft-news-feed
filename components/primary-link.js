@@ -7,7 +7,7 @@ const primaryLink = ({primary, size}) => primary ? h`<a href="${primary.url}" ta
 	${primary.prefLabel}
 </a>` : '';
 
-export default ({metadata, size = 'm'}) => primaryLink({
+export default ({metadata = [], size = 'm'}) => primaryLink({
 	primary: getPrimary(metadata),
 	size,
 });
