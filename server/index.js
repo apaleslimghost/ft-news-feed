@@ -1,7 +1,6 @@
 import connect from 'connect';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
 import errorhandler from 'errorhandler';
 import http from 'http';
 import path from 'path';
@@ -18,8 +17,6 @@ const compiler = webpack(webpackConfig);
 app.use(webpackDevMiddleware(compiler, {
 	publicPath: "/",
 }));
-
-app.use(webpackHotMiddleware(compiler));
 
 app.use(connectRoute(routes, html));
 app.use('/_api', connectRoute(api.router, json));

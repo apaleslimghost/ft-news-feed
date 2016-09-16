@@ -13,4 +13,5 @@ export default ({body, styles}) => `<!doctype html>
 	${body}
 </body>
 <script src="/app.js"></script>
+<link rel="stylesheet" href="/style.css">
 </html>`;

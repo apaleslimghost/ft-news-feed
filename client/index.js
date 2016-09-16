@@ -1,4 +1,3 @@
-import main from '../components/main';
 import routes from '../shared/router';
 import history from './history';
 
@@ -13,9 +12,8 @@ const createServer = routes => {
 
 	server = history.createServer(
 		(...args) => Promise.resolve(routes(...args))
-		.then(({content, styles}) => {
-			mainElement.innerHTML = content();
-			styles.forEach(s => s._insertCss());
+		.then(body => {
+			mainElement.innerHTML = body;
 			window.scrollTo(0, 0);
 		})
 	);

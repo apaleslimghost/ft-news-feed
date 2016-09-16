@@ -3,7 +3,6 @@
 @import 'o-fonts/main';
 @import 'o-colors/main';
 
-
 :global body {
 	@include oColorsFor(page, background body);
 	margin: 0;

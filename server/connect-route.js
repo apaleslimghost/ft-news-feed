@@ -1,15 +1,12 @@
 import base from '../views/base';
 import main from '../components/main';
 
+import shell from '../styles/shell.scss';
+import header from '../styles/header.scss';
+
 export const html = (req, res) => children => {
 	res.headers['content-type'] = 'text/html';
-	const {content, styles = []} = main({children});
-	return base({body: content(), styles: styles.reduce(
-		(css, style) => {
-			return css + style._getCss()
-		},
-		''
-	)});
+	return base({body: main({children}), styles: [shell, header].map(s => s._getCss()).join('')});
 };
 
 export const json = (req, res) => obj => {

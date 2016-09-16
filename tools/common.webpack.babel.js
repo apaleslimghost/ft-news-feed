@@ -19,14 +19,6 @@ export default {
 					f => path.resolve(__dirname, '..', f)
 				),
 				loader: 'babel'
-			},
-			{
-				test: /\.scss$/,
-				loaders: [
-					'isomorphic-style-loader',
-					'css-loader?sourceMap&modules&localIdentName=[name]_[local]_[hash:base64:3]',
-					'sass-loader?sourceMap',
-				],
 			}
 		]
 	},

@@ -2,6 +2,7 @@ import {BannerPlugin} from 'webpack';
 import fs from 'fs';
 import common from './common.webpack.babel';
 import mergeConfig from './merge-config';
+import cssLoader from './css-loader';
 
 const nodeModules = fs.readdirSync('node_modules')
 .filter(x =>
@@ -18,18 +19,33 @@ export default mergeConfig(common, {
 			'./server/index.js',
 		],
 	},
+
 	target: 'node',
+
 	output: {
 		filename: 'server.js'
 	},
+
 	externals: nodeModules,
+
 	plugins: [
 		new BannerPlugin(
 			'require("source-map-support").install();',
 			{ raw: true, entryOnly: false }
 		)
 	],
+
+	module: {
+		loaders: [
+			{
+				test: /\.scss$/,
+				loaders: ['isomorphic-style'].concat(cssLoader),
+			}
+		]
+	},
+
 	devtool: 'sourcemap',
+
 	node: {
 		console: true,
 		global: true,

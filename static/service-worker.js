@@ -3,18 +3,19 @@ importScripts('/assets/sw-toolbox/sw-toolbox.js');
 toolbox.precache([
 	'/_shell',
 	'/app.js',
-	// '/app.css',
+	'/style.css',
 	'http://image.webservices.ft.com/v1/images/raw/fticon:brand-ft-masthead?source=newsfeed'
 ]);
 
 function serveShell(request, values, options) {
-	return caches.match('/_shell');
+	return toolbox.fastest(new Request('/_shell'));
 }
 
 toolbox.router.get('/', serveShell);
 toolbox.router.get('/content/:uuid', serveShell);
 
-toolbox.router.get('/app.js', toolbox.cacheFirst);
+toolbox.router.get('/app.js', toolbox.fastest);
+toolbox.router.get('/style.css', toolbox.fastest);
 
 toolbox.router.get('/_api/search/:page', toolbox.fastest);
 toolbox.router.get('/_api/article/:uuid', toolbox.fastest);
