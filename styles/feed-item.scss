@@ -3,7 +3,8 @@
 @import 'o-typography/main';
 @import 'o-colors/main';
 
-@include oFontsInclude(FinancierDisplayWeb, regular); // title
+@include oFontsInclude(FinancierDisplayWeb, regular);
+@include oFontsInclude(MetricWeb, regular);
 
 .item {
 	padding: 1rem;
