@@ -3,8 +3,7 @@ import route from './route';
 import feed from '../components/feed';
 import article from '../components/article';
 import api from './api';
-import cacheArticle from './cache-article';
-import idbKeyval from 'idb-keyval';
+import {cacheArticle, getArticle} from './cache-article';
 
 export default route({
 	'/' () {
@@ -16,12 +15,7 @@ export default route({
 	'/content/:uuid' ({params}) {
 		return api.article(params.uuid)
 			.then(cacheArticle)
-			.catch(() => {
-				return idbKeyval.get(params.uuid).then(article => {
-					article.offline = true;
-					return article;
-				});
-			})
+			.catch(getArticle(params.uuid))
 			.then(article);
 	},
 
