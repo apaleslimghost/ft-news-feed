@@ -11,12 +11,18 @@ import connectRoute, {html, json} from './connect-route';
 import routes from '../shared/router';
 import api from '../shared/api';
 
+const prod = process.env.NODE_ENV === 'production';
+
 const app = connect();
 const compiler = webpack(webpackConfig);
 
-app.use(webpackDevMiddleware(compiler, {
-	publicPath: "/",
-}));
+if(prod) {
+	app.use(serveStatic(path.resolve(__dirname, '../build')));
+} else {
+	app.use(webpackDevMiddleware(compiler, {
+		publicPath: "/",
+	}));
+}
 
 app.use(connectRoute(routes, html));
 app.use('/_api', connectRoute(api.router, json));
