@@ -28,3 +28,9 @@ toolbox.router.get(
 	toolbox.cacheOnly,
 	{origin: 'https://image.webservices.ft.com'}
 );
+
+toolbox.router.get(
+	'/build/v2/files/o-fonts-assets@1.3.0/:font',
+	toolbox.cacheFirst,
+	{origin: 'https://h2.ft.com'}
+);
