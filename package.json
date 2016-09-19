@@ -11,7 +11,8 @@
     "start": "nodemon -x 'node -r dotenv/config' -w build-server build-server/server.js",
     "build": "npm run build-server ; npm run build-client",
     "now-start": "node build-server/server.js",
-    "stat": "webpack --json --config tools/client.webpack.babel.js > stat.json"
+    "stat": "webpack --json --config tools/client.webpack.babel.js > stat.json",
+    "heroku-postbuild": "npm run build"
   },
   "keywords": [],
   "author": "Matt Brennan <matt@153.io> (http://blog.153.io/)",
