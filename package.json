@@ -6,7 +6,7 @@
   "scripts": {
     "build-client": "webpack --config tools/client.webpack.babel.js",
     "build-server": "webpack --config tools/server.webpack.babel.js",
-    "postinstall": "webpack --config tools/server.webpack.babel.js",
+    "postinstall": "bower install",
     "prestart": "webpack --config tools/server.webpack.babel.js --watch &",
     "start": "nodemon -x 'node -r dotenv/config' -w build-server build-server/server.js",
     "build": "npm run build-server ; npm run build-client",
@@ -27,6 +27,7 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-2": "^6.11.0",
     "babel-preset-stage-3": "^6.11.0",
+    "bower": "^1.7.9",
     "css-loader": "^0.23.1",
     "dotenv": "^2.0.0",
     "eslint": "^3.2.2",
