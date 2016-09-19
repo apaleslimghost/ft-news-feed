@@ -4,7 +4,6 @@ import fetch from './fetch';
 
 export default model({
 	article: uuid => fetch(`https://amp.ft.com/api/${uuid}`)
-		.then(r => r.text())
 		.then(r => r.json())
 		.then(({_source}) => _source),
 
