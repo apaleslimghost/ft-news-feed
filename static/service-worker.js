@@ -7,7 +7,7 @@ toolbox.precache([
 	'/_shell',
 	'/app.js',
 	'/style.css',
-	'http://image.webservices.ft.com/v1/images/raw/fticon:brand-ft-masthead?source=newsfeed'
+	'https://image.webservices.ft.com/v1/images/raw/fticon:brand-ft-masthead?source=newsfeed'
 ]);
 
 function serveShell(request, values, options) {
@@ -26,5 +26,5 @@ toolbox.router.get('/_api/article/:uuid', toolbox.fastest);
 toolbox.router.get(
 	'/v1/images/raw/fticon:brand-ft-masthead',
 	toolbox.cacheOnly,
-	{origin: 'http://image.webservices.ft.com'}
+	{origin: 'https://image.webservices.ft.com'}
 );
