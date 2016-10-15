@@ -1,7 +1,6 @@
-import h from './h';
+import {define, html} from 'excise';
 import s from '../styles/shell.scss';
+import './header';
 
-import header from './header';
-
-export default ({children} = {}) => h`${header()}
-	<main class="${s.main}">${children}</main>`;
+export default define('ft-news-feed', ({children} = {}) => html`<ft-header />
+	<main class="${s.main}"><slot /></main>`);

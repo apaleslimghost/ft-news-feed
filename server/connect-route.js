@@ -1,12 +1,18 @@
 import base from '../views/base';
-import main from '../components/main';
+import '../components/main';
+import {html, renderToString} from 'excise';
 
 import shell from '../styles/shell.scss';
 import header from '../styles/header.scss';
 
-export const html = (req, res) => children => {
+export const component = (req, res) => children => {
 	res.headers['content-type'] = 'text/html';
-	return base({body: main({children}), styles: [shell, header].map(s => s._getCss()).join('')});
+	return base({
+		body: renderToString(
+			html`<ft-news-feed>${children}</ft-news-feed>`
+		),
+		styles: [shell, header].map(s => s._getCss()).join('')
+	});
 };
 
 export const json = (req, res) => obj => {

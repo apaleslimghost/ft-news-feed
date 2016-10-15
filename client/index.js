@@ -1,5 +1,6 @@
 import routes from '../shared/router';
 import history from './history';
+import {innerHTML} from 'diffhtml';
 
 import './register-service-worker';
 
@@ -13,7 +14,7 @@ const createServer = routes => {
 	server = history.createServer(
 		(...args) => Promise.resolve(routes(...args))
 		.then(body => {
-			mainElement.innerHTML = body;
+			innerHTML(mainElement, body);
 			window.scrollTo(0, 0);
 		})
 	);

@@ -1,7 +1,9 @@
 import route from './route';
 
-import feed from '../components/feed';
-import article from '../components/article';
+import '../components/feed';
+import '../components/article';
+import {html} from 'excise';
+
 import api from './api';
 import {cacheArticle, getArticle} from './cache-article';
 
@@ -9,17 +11,17 @@ export default route({
 	'/' () {
 		return api.search(1)
 			.then(({articles}) => articles.map(cacheArticle))
-			.then(feed);
+			.then(articles => html`<ft-feed articles=${articles} />`);
 	},
 
 	'/content/:uuid' ({params}) {
 		return api.article(params.uuid)
 			.then(cacheArticle)
 			.catch(getArticle(params.uuid))
-			.then(article);
+			.then(article => html`<ft-article article=${article} />`);
 	},
 
 	'/_shell' () {
-		return '';
+		return [];
 	}
 });

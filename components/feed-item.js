@@ -1,13 +1,13 @@
-import h from './h';
+import {define, html} from 'excise';
 import s from '../styles/feed-item.scss';
-import primaryLink from './primary-link';
+import './primary-link';
 
-export default ({id, title, summaries, metadata}) => h`<li class="${s.item}">
-	${primaryLink({metadata, size: 's'})}
+export default define('ft-feed-item', ({article}) => html`<li class="${s.item}">
+	<ft-primary-link metadata=${article.metadata} size="s" />
 
-	<a href="${`/content/${id}`}" class="${s.link}" data-link>
-		${title}
+	<a href="${`/content/${article.id}`}" class="${s.link}" data-link>
+		${article.title}
 	</a>
 
-	<p class="${s.subhead}">${summaries[0]}</p>
-</li>`;
+	<p class="${s.subhead}">${article.summaries[0]}</p>
+</li>`);

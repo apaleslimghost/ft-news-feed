@@ -1,13 +1,13 @@
-import h from './h';
+import {define, html} from 'excise';
 import s from '../styles/primary-link.scss';
 
 const getPrimary = metadata => metadata.find(datum => datum.primary === 'theme');
 
-const primaryLink = ({primary, size}) => primary ? h`<a href="${primary.url}" target='_blank' class="${s.link} ${s[size]}">
+const primaryLink = ({primary, size}) => primary ? html`<a href="${primary.url}" target='_blank' class="${s.link} ${s[size]}">
 	${primary.prefLabel}
-</a>` : '';
+</a>` : [];
 
-export default ({metadata = [], size = 'm'}) => primaryLink({
+export default define('ft-primary-link', ({metadata = [], size = 'm'}) => primaryLink({
 	primary: getPrimary(metadata),
 	size,
-});
+}));

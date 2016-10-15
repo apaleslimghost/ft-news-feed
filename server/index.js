@@ -7,7 +7,7 @@ import path from 'path';
 import serveStatic from 'serve-static';
 
 import webpackConfig from '../tools/client.webpack.babel';
-import connectRoute, {html, json} from './connect-route';
+import connectRoute, {component, json} from './connect-route';
 import routes from '../shared/router';
 import api from '../shared/api';
 
@@ -24,7 +24,7 @@ if(prod) {
 	}));
 }
 
-app.use(connectRoute(routes, html));
+app.use(connectRoute(routes, component));
 app.use('/_api', connectRoute(api.router, json));
 
 app.use(serveStatic(path.resolve(__dirname, '../static')));
