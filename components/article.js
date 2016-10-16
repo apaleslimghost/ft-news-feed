@@ -6,10 +6,12 @@ export default define('ft-article', ({article}) => html`<article class="${s.arti
 	<ft-primary-link metadata=${article.metadata} size="l" />
 
 	<h1 class="${s.title}">${article.title}</h1>
-	${article.summaries && article.summaries.length ? `<h2 class="${s.subhead}">${article.summaries[0]}</h2>` : ''}
+	${article.summaries && article.summaries.length
+		? html`<h2 class="${s.subhead}">${article.summaries[0]}</h2>`
+		: ''}
 
 	<div class="${s.body}"}>
 		${article.offline && '<h2>Unavailable offline</h2>'}
-		${article.bodyHTML}
+		${html(article.bodyHTML)}
 	</div>
 </article>`);
