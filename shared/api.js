@@ -1,11 +1,8 @@
 import apiClient from './api-client';
 import model from '../shared/model';
-import fetch from './fetch';
 
 export default model({
-	article: uuid => fetch(`https://amp.ft.com/api/${uuid}`)
-		.then(r => r.json())
-		.then(({_source}) => _source),
+	article: uuid => apiClient.content({uuid}),
 
 	search(p) {
 		const page = parseInt(p, 10)
